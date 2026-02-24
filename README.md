@@ -4,11 +4,14 @@ A fully containerized real-time analytics stack featuring a Python-based clickst
 # Project Architecture
 This project simulates a production-grade data pipeline where user-click events are captured, buffered, and analyzed in real-time.
 
-# ad-click-gen: A Python producer (containerized) that generates synthetic ad-click events and pushes them to Redpanda.
+# ad-click-gen:
+A Python producer (containerized) that generates synthetic ad-click events and pushes them to Redpanda.
 
-# redpanda: A high-performance, Kafka-compatible message broker that handles the event stream.
+# redpanda: 
+A high-performance, Kafka-compatible message broker that handles the event stream.
 
-# risingwave: The streaming database that consumes the stream to perform real-time SQL transformations.
+# risingwave: 
+The streaming database that consumes the stream to perform real-time SQL transformations.
 
 # Quick Start
 Spin up the stack:
@@ -23,13 +26,16 @@ Analyze Data: Connect any Postgres-compatible tool (DBeaver/pgAdmin) to localhos
 # Key Technical Implementation
 Healthcheck Dependencies: Utilized Docker healthcheck and service_healthy conditions to ensure service stability and prevent producer "cold-start" failures.
 
-# Resource Management: Optimized Redpanda for local development using --overprovisioned and --smp 1 flags to run efficiently on a single machine.
+# Resource Management: 
+Optimized Redpanda for local development using --overprovisioned and --smp 1 flags to run efficiently on a single machine.
 
 # Streaming Logic:
 
-# Tumble Windows: For hourly non-overlapping click reports.
+# Tumble Windows: 
+For hourly non-overlapping click reports.
 
-# Hopping Windows: For 1-minute moving averages updated every 30 seconds to track traffic trends.
+# Hopping Windows: 
+For 1-minute moving averages updated every 30 seconds to track traffic trends.
 
 Infrastructure as Code
 The entire environment is defined in docker-compose.yml, to manage networking, volumes, and service dependencies for complex data systems.
